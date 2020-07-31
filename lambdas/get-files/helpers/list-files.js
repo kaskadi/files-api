@@ -1,10 +1,5 @@
 module.exports = ({ s3, bucketName, path }) => {
-  const params = {
-    Bucket: bucketName,
-    Delimiter: '/',
-    Prefix: path
-  }
-  return s3.listObjectsV2(params).promise()
+  return s3.listObjectsV2({ Bucket: bucketName, Delimiter: '/', Prefix: path }).promise()
     .then(extractData)
     .then(processData(s3, bucketName))
 }

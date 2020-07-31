@@ -15,15 +15,8 @@ module.exports.handler = async (event) => {
       'Access-Control-Allow-Origin': '*'
     }
   }
-  if (!event.queryStringParameters || !event.queryStringParameters.path) {
-    return {
-      ...baseResponse,
-      statusCode: 400,
-      body: JSON.stringify({ message: 'Please provide a valid path in your query string parameters...' })
-    }
-  }
   const params = {
-    path: event.queryStringParameters.path,
+    path: !event.queryStringParameters ? undefined : event.queryStringParameters.path,
     s3: new AWS.S3({
       region: 'eu-central-1',
       apiVersion: '2006-03-01'

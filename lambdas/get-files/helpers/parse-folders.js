@@ -9,7 +9,7 @@ function parseFolder (s3, bucketName) {
       .then(meta => {
         return {
           type: 'folder',
-          size: meta.ContentLength,
+          size: meta.Size,
           lastModified: meta.LastModified,
           path
         }
@@ -18,9 +18,6 @@ function parseFolder (s3, bucketName) {
 }
 
 function getFolderMetaData (s3, bucketName, path) {
-  const params = {
-    Bucket: bucketName,
-    Key: path
-  }
-  return s3.headObject(params).promise()
+  return s3.listObjectsV2({ Bucket: bucketName, Prefix: path, MaxKeys: 1 }).promise()
+    .then(objects => objects.Contents[0])
 }
