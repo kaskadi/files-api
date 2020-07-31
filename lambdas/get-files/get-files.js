@@ -1,7 +1,6 @@
 // ************
 // Note: this lambda shouldn't need much update to handle any type of get files.
 // Ideas:
-//    - do not default to 'imgs/products/' for our path
 //    - be able to support CDN/S3 selection between public and private one, would probably need a bit more check for access control
 // ************
 
