@@ -43,3 +43,6 @@ functions:
   GetFiles: ${file(./lambdas/get-files/serverless.yml)}
 layers:
   ApiLayer: ${file(./layer/serverless.yml)}
+resources:
+  Resources:
+    CognitoAuthorizer: ${file(./resources/cognito-authorizer/serverless.yml)}
