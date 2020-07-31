@@ -15,8 +15,11 @@ module.exports.handler = async (event) => {
       'Access-Control-Allow-Origin': '*'
     }
   }
+  let path = event.queryStringParameters ? event.queryStringParameters.path : undefined
+  path = path && path.trim() !== '' ? path.trim() : undefined
+  path = path && path[path.length - 1] !== '/' ? `${path}/` : path
   const params = {
-    path: !event.queryStringParameters ? undefined : event.queryStringParameters.path,
+    path,
     s3: new AWS.S3({
       region: 'eu-central-1',
       apiVersion: '2006-03-01'
