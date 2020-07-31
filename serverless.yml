@@ -3,7 +3,7 @@ service:
 package:
   individually: true
   exclude:
-    - '**/**'
+    - "**/**"
 plugins:
   - serverless-aws-documentation
   - serverless-offline
@@ -36,14 +36,15 @@ provider:
   iamRoleStatements:
     - Effect: Allow
       Action:
-       - s3:ListBucket
-       - s3:GetObject
-       - s3:PutObject
-      Resource: 
+        - s3:ListBucket
+        - s3:GetObject
+        - s3:PutObject
+      Resource:
         - arn:aws:s3:::${env:S3_PUBLIC_BUCKET}
         - arn:aws:s3:::${env:S3_PUBLIC_BUCKET}/*
 functions:
   GetFiles: ${file(./lambdas/get-files/serverless.yml)}
+  GetSignedUrl: ${file(./lambdas/get-signed-url/serverless.yml)}
 layers:
   ApiLayer: ${file(./layer/serverless.yml)}
 resources:

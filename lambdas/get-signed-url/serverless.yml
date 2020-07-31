@@ -1,0 +1,16 @@
+handler: lambdas/get-signed-url/get-signed-url.handler
+name: get-signed-url
+layers:
+  - { Ref: ApiLayerLambdaLayer }
+package:
+  include:
+    - lambdas/get-signed-url/get-signed-url.js
+    - lambdas/get-signed-url/helpers/**
+events:
+  - http:
+      method: get
+      path: get-signed-url
+      cors: true
+      authorizer:
+        type: COGNITO_USER_POOLS
+        authorizerId: !Ref CognitoAuthorizer
