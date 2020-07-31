@@ -7,14 +7,10 @@
 
 const AWS = require('aws-sdk')
 const getData = require('./helpers/get-data')
+const { getBaseResponse } = require('files-api-utils')
 
 module.exports.handler = async (event) => {
-  const baseResponse = {
-    statusCode: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*'
-    }
-  }
+  const baseResponse = getBaseResponse()
   let path = event.queryStringParameters ? event.queryStringParameters.path : undefined
   path = path && path.trim() !== '' ? path.trim() : undefined
   path = path && path[path.length - 1] !== '/' ? `${path}/` : path
