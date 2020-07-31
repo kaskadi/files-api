@@ -30,6 +30,9 @@ provider:
     service: ${self:service.name}
     logical-unit: files
     type: http
+  environment:
+    S3_PUBLIC_BUCKET: ${env:S3_PUBLIC_BUCKET}
+    CFD_PUBLIC_DOMAIN: ${env:CFD_PUBLIC_DOMAIN}
   iamRoleStatements:
     - Effect: Allow
       Action:
