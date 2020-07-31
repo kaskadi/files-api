@@ -1,3 +1,7 @@
+// ************
+// NOTE: this lambda shouldn't need much update to handle any type of get files. Maybe do not default to 'imgs/products/' for our path though.
+// ************
+
 const AWS = require('aws-sdk')
 const getData = require('./helpers/get-data')
 
