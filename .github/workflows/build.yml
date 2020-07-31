@@ -19,3 +19,6 @@ jobs:
       run: npm i
     - name: Test
       run: npm test
+      env:
+        S3_PUBLIC_BUCKET: ${{ secrets.S3_PUBLIC_BUCKET }}
+        CFD_PUBLIC_DOMAIN: ${{ secrets.CFD_PUBLIC_DOMAIN }}
