@@ -8,7 +8,7 @@ package:
     - lambdas/get-signed-url/helpers/**
 events:
   - http:
-      method: get
+      method: post
       path: get-signed-url
       cors: true
       authorizer:
