@@ -30,6 +30,15 @@ provider:
     service: ${self:service.name}
     logical-unit: files
     type: http
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+       - s3:ListBucket
+       - s3:GetObject
+       - s3:PutObject
+      Resource: 
+        - arn:aws:s3:::${env:BUCKET_NAME}
+        - arn:aws:s3:::${env:BUCKET_NAME}/*
 functions:
   GetFiles: ${file(./lambdas/get-files/serverless.yml)}
 layers:
