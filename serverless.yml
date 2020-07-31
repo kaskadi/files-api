@@ -31,6 +31,6 @@ provider:
     logical-unit: api-logical-unit
     type: api, s3, sns, etc.
 functions:
-  HelloWorld: ${file(./lambdas/hello-world/serverless.yml)}
+  GetFiles: ${file(./lambdas/get-files/serverless.yml)}
 layers:
   ApiLayer: ${file(./layer/serverless.yml)}

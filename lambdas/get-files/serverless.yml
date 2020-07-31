@@ -1,0 +1,13 @@
+handler: lambdas/get-files/get-files.handler
+name: get-files
+layers:
+  - { Ref: ApiLayerLambdaLayer }
+package:
+  include:
+    - lambdas/get-files/get-files.js
+    - lambdas/get-files/helpers/**
+events:
+  - http:
+      method: get
+      path: /
+      cors: true
