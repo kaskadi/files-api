@@ -1,4 +1,4 @@
-module.exports = (s3, bucketName, path) => {
+module.exports = ({ s3, bucketName, path }) => {
   const params = {
     Bucket: bucketName,
     Delimiter: '/',
