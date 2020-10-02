@@ -14,3 +14,9 @@ events:
       authorizer:
         type: COGNITO_USER_POOLS
         authorizerId: !Ref CognitoAuthorizer
+      kaskadi-docs:
+        description: This endpoint allows user to retrieve the list of files located at a given path inside of Kaskadi's public AWS S3 bucket.
+        queryStringParameters:
+          - key: path
+            description: Path from where we would like to list files.
+            default: /
