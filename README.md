@@ -197,6 +197,34 @@ Body:
 ```
 </details>
 
+<details>
+<summary>Example #2</summary>
+
+_Request:_
+
+```HTTP
+GET https://api.klimapartner.net/files/get-signed-url
+
+Headers:
+  Authorization: Bearer COGNITO_ACCESS_TOKEN
+```
+
+_Response:_
+
+```HTTP
+Status code:
+  400
+
+Headers:
+  Access-Control-Allow-Origin: *
+
+Body:
+  {
+    "message": "Please provide a key parameter in your query string for the key of the file you would like to upload."
+  }
+```
+</details>
+
 # API resources
 
 The following lambda functions are used in this API:
