@@ -142,9 +142,9 @@ Body:
 ## `/get-signed-url` <a name="/get-signed-url"></a>
 
 Supported methods:
-- [POST](#get-signed-url-POST)
+- [GET](#get-signed-url-GET)
 
-### `POST` (target lambda → [get-signed-url](#get-signed-url)) <a name="get-signed-url-POST"></a>
+### `GET` (target lambda → [get-signed-url](#get-signed-url)) <a name="get-signed-url-GET"></a>
 
 **Description:**
 
@@ -158,13 +158,13 @@ This endpoint provides a way for users to get signed URLs that allows them to up
 
 **Query string parameters:**
 
-No query string parameters found for this method.
+|  Key  | Default | Description                                                                                                                   |
+| :---: | :-----: | :---------------------------------------------------------------------------------------------------------------------------- |
+| `key` |   `/`   | Key of the item you would like to upload on S3. Uses `/` as a separator to determine pseudo-folder structure to create on S3. |
 
 **Request body:**
 
-|  Key  | Default | Description                                                                                                                   |
-| :---: | :-----: | :---------------------------------------------------------------------------------------------------------------------------- |
-| `key` |         | Key of the item you would like to upload on S3. Uses `/` as a separator to determine pseudo-folder structure to create on S3. |
+No body found for this method.
 
 **Examples:**
 
@@ -174,15 +174,10 @@ No query string parameters found for this method.
 _Request:_
 
 ```HTTP
-POST https://api.klimapartner.net/files/get-signed-url
+GET https://api.klimapartner.net/files/get-signed-url?key=imgs/apple.png
 
 Headers:
   Authorization: Bearer COGNITO_ACCESS_TOKEN
-
-Body:
-  {
-    "key": "imgs/apple.png"
-  }
 ```
 
 _Response:_
