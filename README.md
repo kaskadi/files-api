@@ -25,20 +25,28 @@
 <!-- automatically generated documentation will be placed in here -->
 # API endpoints
 
+The origin and root path for this API is: `https://api.klimapartner.net/files`
+
 The following endpoints are defined in this API:
 - [/](#/)
 - [/get-signed-url](#/get-signed-url)
 
-## `/` (target lambda → [get-files](#get-files)) <a name="/"></a>
+## `/` <a name="/"></a>
 
 Supported methods:
-- [GET](#GET)
+- [GET](#/-GET)
 
-### `GET`
+### `GET` (target lambda → [get-files](#get-files)) <a name="/-GET"></a>
 
 **Description:**
 
 This endpoint allows user to retrieve the list of files located at a given path inside of Kaskadi's public AWS S3 bucket.
+
+**Authorization:**
+
+|   Type  | Identity source                                       |
+| :-----: | :---------------------------------------------------- |
+| Cognito | <ul><li>method.request.header.Authorization</li></ul> |
 
 **Query string parameters:**
 
@@ -50,22 +58,103 @@ This endpoint allows user to retrieve the list of files located at a given path 
 
 No body found for this method.
 
-_Example request:_
+**Examples:**
+
+<details>
+<summary>Example #1</summary>
+
+_Request:_
 
 ```HTTP
-GET /?path=path_value
+GET https://api.klimapartner.net/files/?path=modules
+
+Headers:
+  Authorization: Bearer COGNITO_ACCESS_TOKEN
 ```
 
-## `/get-signed-url` (target lambda → [get-signed-url](#get-signed-url)) <a name="/get-signed-url"></a>
+_Response:_
+
+```HTTP
+Status code:
+  200
+
+Headers:
+  Access-Control-Allow-Origin: *
+
+Body:
+  [
+    {
+      "type": "folder",
+      "size": 0,
+      "lastModified": "2020-01-14T15:07:20.000Z",
+      "path": "modules/@kaskadi/"
+    },
+    {
+      "type": "folder",
+      "size": 6272,
+      "lastModified": "2020-01-14T15:20:06.000Z",
+      "path": "modules/@webcomponents/"
+    },
+    {
+      "type": "folder",
+      "size": 0,
+      "lastModified": "2020-03-09T07:30:12.000Z",
+      "path": "modules/lit-element/"
+    },
+    {
+      "type": "folder",
+      "size": 0,
+      "lastModified": "2020-03-09T07:30:13.000Z",
+      "path": "modules/lit-html/"
+    }
+  ]
+```
+</details>
+
+<details>
+<summary>Example #2</summary>
+
+_Request:_
+
+```HTTP
+GET https://api.klimapartner.net/files/?path=modulezzz
+
+Headers:
+  Authorization: Bearer COGNITO_ACCESS_TOKEN
+```
+
+_Response:_
+
+```HTTP
+Status code:
+  404
+
+Headers:
+  Access-Control-Allow-Origin: *
+
+Body:
+  {
+    "message": "No files found under modulezzz/"
+  }
+```
+</details>
+
+## `/get-signed-url` <a name="/get-signed-url"></a>
 
 Supported methods:
-- [POST](#POST)
+- [POST](#get-signed-url-POST)
 
-### `POST`
+### `POST` (target lambda → [get-signed-url](#get-signed-url)) <a name="get-signed-url-POST"></a>
 
 **Description:**
 
 This endpoint provides a way for users to get signed URLs that allows them to upload content into Kaskadi's public AWS S3 bucket.
+
+**Authorization:**
+
+|   Type  | Identity source                                       |
+| :-----: | :---------------------------------------------------- |
+| Cognito | <ul><li>method.request.header.Authorization</li></ul> |
 
 **Query string parameters:**
 
@@ -77,15 +166,41 @@ No query string parameters found for this method.
 | :---: | :-----: | :---------------------------------------------------------------------------------------------------------------------------- |
 | `key` |         | Key of the item you would like to upload on S3. Uses `/` as a separator to determine pseudo-folder structure to create on S3. |
 
-_Example request:_
+**Examples:**
+
+<details>
+<summary>Example #1</summary>
+
+_Request:_
 
 ```HTTP
-POST /get-signed-url
+POST https://api.klimapartner.net/files/get-signed-url
 
-{
-  "key": "key_value"
-}
+Headers:
+  Authorization: Bearer COGNITO_ACCESS_TOKEN
+
+Body:
+  {
+    "key": "imgs/apple.png"
+  }
 ```
+
+_Response:_
+
+```HTTP
+Status code:
+  200
+
+Headers:
+  Access-Control-Allow-Origin: *
+
+Body:
+  {
+    "presignedUrl": "https://some.signed.url/to/upload/file?where=in_cdn",
+    "imgUrl": "https://cdn.klimapartner.net/imgs/apple.png"
+  }
+```
+</details>
 
 # API resources
 
@@ -120,7 +235,21 @@ Layer for files-api
 
 ### Dependencies
 
+- `aws-sdk` (local utility)
+- `base64-js` (local utility)
+- `buffer` (local utility)
+- `events` (local utility)
 - `files-api-utils` (local utility)
+- `ieee754` (local utility)
+- `isarray` (local utility)
+- `jmespath` (local utility)
+- `punycode` (local utility)
+- `querystring` (local utility)
+- `sax` (local utility)
+- `url` (local utility)
+- `uuid` (local utility)
+- `xml2js` (local utility)
+- `xmlbuilder` (local utility)
 
 See [configuration file](./serverless.yml) for more details.
 
