@@ -22,7 +22,7 @@ module.exports.handler = async (event) => {
     return {
       ...baseResponse,
       statusCode: 400,
-      body: JSON.stringify({ message: 'Please provide a key for the file you would like to upload in your query string parameters.' })
+      body: JSON.stringify({ message: 'Please provide a key parameter in your query string for the key of the file you would like to upload.' })
     }
   }
   return await createSignedUrl(s3, qs)
