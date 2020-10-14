@@ -30,7 +30,7 @@ events:
               body:
                 presignedUrl: https://some.signed.url/to/upload/file?where=in_cdn
                 imgUrl: https://cdn.klimapartner.net/imgs/apple.png
-          - request:
+          - request: {}
             response:
               statusCode: 400
               headers:
