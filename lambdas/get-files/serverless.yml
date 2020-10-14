@@ -20,3 +20,28 @@ events:
           - key: path
             description: Path from where we would like to list files.
             default: /
+        examples:
+          - request:
+              queryStringParameters:
+                path: modules
+            response:
+              statusCode: 200
+              headers:
+                'Access-Control-Allow-Origin': '*'
+              body:
+                - type: folder
+                  size: 0
+                  lastModified: '2020-01-14T15:07:20.000Z'
+                  path: modules/@kaskadi/
+                - type: folder
+                  size: 6272
+                  lastModified: '2020-01-14T15:20:06.000Z'
+                  path: modules/@webcomponents/
+                - type: folder
+                  size: 0
+                  lastModified: '2020-03-09T07:30:12.000Z'
+                  path: modules/lit-element/
+                - type: folder
+                  size: 0
+                  lastModified: '2020-03-09T07:30:13.000Z'
+                  path: modules/lit-html/
