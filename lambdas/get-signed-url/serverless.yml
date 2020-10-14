@@ -8,7 +8,7 @@ package:
     - lambdas/get-signed-url/helpers/**
 events:
   - http:
-      method: post
+      method: get
       path: get-signed-url
       cors: true
       authorizer:
@@ -16,12 +16,13 @@ events:
         authorizerId: !Ref CognitoAuthorizer
       kaskadi-docs:
         description: This endpoint provides a way for users to get signed URLs that allows them to upload content into Kaskadi's public AWS S3 bucket.
-        body:
+        queryStringParameters:
           - key: key
             description: Key of the item you would like to upload on S3. Uses `/` as a separator to determine pseudo-folder structure to create on S3.
+            default: /
         examples:
           - request:
-              body:
+              queryStringParameters:
                 key: imgs/apple.png
             response:
               statusCode: 200

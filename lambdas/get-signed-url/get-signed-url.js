@@ -17,7 +17,7 @@ const s3 = new AWS.S3({
 
 module.exports.handler = async (event) => {
   const baseResponse = getBaseResponse()
-  return await createSignedUrl(s3, JSON.parse(event.body))
+  return await createSignedUrl(s3, event.queryStringParameters || {})
     .then(processRes(baseResponse))
     .catch(processErr(baseResponse))
 }
