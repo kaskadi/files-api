@@ -14,7 +14,7 @@
     "Alexis Lemaire <a.lemaire@klimapartner.de>"
   ],
   "license": "MIT",
-  "devDependencies": {
-    "aws-sdk": "^2.724.0"
+  "dependencies": {
+    "aws-sdk": "^2.771.0"
   }
 }
