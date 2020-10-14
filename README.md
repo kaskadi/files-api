@@ -158,9 +158,9 @@ This endpoint provides a way for users to get signed URLs that allows them to up
 
 **Query string parameters:**
 
-|  Key  | Default | Description                                                                                                                   |
-| :---: | :-----: | :---------------------------------------------------------------------------------------------------------------------------- |
-| `key` |   `/`   | Key of the item you would like to upload on S3. Uses `/` as a separator to determine pseudo-folder structure to create on S3. |
+|  Key  | Default | Description                                                                                                                                                   |
+| :---: | :-----: | :------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `key` |         | Key of the item you would like to upload on S3. Uses `/` as a separator to determine pseudo-folder structure to create on S3. **This parameter is required!** |
 
 **Request body:**
 
