@@ -19,3 +19,14 @@ events:
         body:
           - key: key
             description: Key of the item you would like to upload on S3. Uses `/` as a separator to determine pseudo-folder structure to create on S3.
+        examples:
+          - request:
+              body:
+                key: imgs/apple.png
+            response:
+              statusCode: 200
+              headers:
+                'Access-Control-Allow-Origin': '*'
+              body:
+                presignedUrl: https://some.signed.url/to/upload/file?where=in_cdn
+                imgUrl: https://cdn.klimapartner.net/imgs/apple.png
