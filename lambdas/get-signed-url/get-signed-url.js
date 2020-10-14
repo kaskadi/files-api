@@ -17,7 +17,15 @@ const s3 = new AWS.S3({
 
 module.exports.handler = async (event) => {
   const baseResponse = getBaseResponse()
-  return await createSignedUrl(s3, event.queryStringParameters || {})
+  const qs = event.queryStringParameters || {}
+  if (!qs.key) {
+    return {
+      ...baseResponse,
+      statusCode: 400,
+      body: JSON.stringify({ message: 'Please provide a key for the file you would like to upload in your query string parameters.' })
+    }
+  }
+  return await createSignedUrl(s3, qs)
     .then(processRes(baseResponse))
     .catch(processErr(baseResponse))
 }

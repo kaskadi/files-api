@@ -18,8 +18,7 @@ events:
         description: This endpoint provides a way for users to get signed URLs that allows them to upload content into Kaskadi's public AWS S3 bucket.
         queryStringParameters:
           - key: key
-            description: Key of the item you would like to upload on S3. Uses `/` as a separator to determine pseudo-folder structure to create on S3.
-            default: /
+            description: Key of the item you would like to upload on S3. Uses `/` as a separator to determine pseudo-folder structure to create on S3. **This parameter is required!**
         examples:
           - request:
               queryStringParameters:
