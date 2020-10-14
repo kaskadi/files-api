@@ -45,3 +45,12 @@ events:
                   size: 0
                   lastModified: '2020-03-09T07:30:13.000Z'
                   path: modules/lit-html/
+          - request:
+              queryStringParameters:
+                path: modulezzz
+            response:
+              statusCode: 404
+              headers:
+                'Access-Control-Allow-Origin': '*'
+              body:
+                message: No files found under modulezzz/
