@@ -237,17 +237,17 @@ The following layers are used in this API:
 
 ## get-files <a name="get-files"></a>
 
-|    Name   | Sources                | Timeout |                   Handler                   | Layers                                                |
-| :-------: | :--------------------- | :-----: | :-----------------------------------------: | :---------------------------------------------------- |
-| get-files | <ul><li>HTTP</li></ul> | default | [handler](./lambdas/get-files/get-files.js) | <ul><li>[files-api-layer](#files-api-layer)</li></ul> |
+|    Name   | Sources                      | Timeout |                   Handler                   | Layers                                                |
+| :-------: | :--------------------------- | :-----: | :-----------------------------------------: | :---------------------------------------------------- |
+| get-files | <ul><li>HTTP (GET)</li></ul> | default | [handler](./lambdas/get-files/get-files.js) | <ul><li>[files-api-layer](#files-api-layer)</li></ul> |
 
 See [configuration file](./serverless.yml) for more details.
 
 ## get-signed-url <a name="get-signed-url"></a>
 
-|      Name      | Sources                | Timeout |                        Handler                        | Layers                                                |
-| :------------: | :--------------------- | :-----: | :---------------------------------------------------: | :---------------------------------------------------- |
-| get-signed-url | <ul><li>HTTP</li></ul> | default | [handler](./lambdas/get-signed-url/get-signed-url.js) | <ul><li>[files-api-layer](#files-api-layer)</li></ul> |
+|      Name      | Sources                      | Timeout |                        Handler                        | Layers                                                |
+| :------------: | :--------------------------- | :-----: | :---------------------------------------------------: | :---------------------------------------------------- |
+| get-signed-url | <ul><li>HTTP (GET)</li></ul> | default | [handler](./lambdas/get-signed-url/get-signed-url.js) | <ul><li>[files-api-layer](#files-api-layer)</li></ul> |
 
 See [configuration file](./serverless.yml) for more details.
 
